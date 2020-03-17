@@ -45,7 +45,8 @@ public abstract class BankAccount {
 	 * @param amount double, the amount to withdraw
 	 * @return true if the transaction took place
 	 */
-	public boolean withdraw(double amount) { // throws NegativeAmountException, 
+	public boolean withdraw(double amount) throws ExceedsFraudSuspicionLimitException { 
+		// throws NegativeAmountException, 
 			//ExceedsAvailableBalanceException, ExceedsFraudSuspicionLimitException {
 			if (amount > this.balance) {
 				return false;
@@ -92,13 +93,28 @@ public abstract class BankAccount {
 	 * @param years int, the time the account collects interest for
 	 * @return double, the projected total value of the account 
 	 */
-	public double futureValue(int years) {
+	public double futureValue(int years) throws ExceedsFraudSuspicionLimitException {
+		if(years < 1) {
+			throw new ExceedsFraudSuspicionLimitException();
+		}
+		
+		/*
+		float irate = 1 + (float)this.interestRate;
+		float cr = 1;
+		for(int i=0; i<years; i++) {
+			cr *= irate;
+		}
+		return this.balance * cr;
+		*/
+		
 		return recursiveFutureValue(years);
 	}
 	public double recursiveFutureValue(int years) {
+		//if(years == 1) { return this.balance * (1 + this.interestRate); } 
+		//return recursiveFutureValue(years - 1) * (1 + this.interestRate);
 		
 		if(years == 0) { return this.balance; } 
-		return recursiveFutureValue(years - 1) * (1 + this.interestRate);
+		return (recursiveFutureValue(years - 1) * (1 + this.interestRate));
 	}
 	
 	
@@ -107,8 +123,9 @@ public abstract class BankAccount {
 	 * mistake?
 	 * overloaded to handle 
 	 */
-	public double futureValue() {
-		return futureValue(5); 
+	public double futureValue() throws ExceedsFraudSuspicionLimitException {
+		throw new ExceedsFraudSuspicionLimitException();
+		//return futureValue(5); 
 	}
 	
 	/**

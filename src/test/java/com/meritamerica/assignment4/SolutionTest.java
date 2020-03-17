@@ -160,8 +160,9 @@ public class SolutionTest {
             	"123456789");
     	
     	CDAccount cdAccount = accountHolder.addCDAccount(new CDOffering(5, 0.03), 10000);
-        
+        System.out.println("fdfdfde");
         assertEquals(false, cdAccount.withdraw(500.0));
+        System.out.println("fdfdfde");
     }
     
     @Test(expected = ExceedsFraudSuspicionLimitException.class)

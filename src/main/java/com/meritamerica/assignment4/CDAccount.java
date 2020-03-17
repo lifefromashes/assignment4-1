@@ -45,11 +45,12 @@ public class CDAccount extends BankAccount {
 	 * CD accounts should refuse all withdraws
 	 */
 	@Override
-	public boolean withdraw(double amount) { // throws NegativeAmountException, 
+	public boolean withdraw(double amount) throws ExceedsFraudSuspicionLimitException { 
+		// throws NegativeAmountException, 
 			//ExceedsAvailableBalanceException, ExceedsFraudSuspicionLimitException {
 		
-		//throw new ExceedsFraudSuspicionLimitException();
-		return false;
+		throw new ExceedsFraudSuspicionLimitException();
+		//return false;
 	}
 	
 	/**
@@ -60,6 +61,10 @@ public class CDAccount extends BankAccount {
 			//throws NegativeAmountException, 
 			//ExceedsAvailableBalanceException, ExceedsFraudSuspicionLimitException {
 		throw new ExceedsFraudSuspicionLimitException();
+		/*
+		 * The tests demand this exception here, but we really need a new type
+		 */
+		
 		//return false;
 		
 	}

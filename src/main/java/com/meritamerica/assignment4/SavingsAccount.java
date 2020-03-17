@@ -80,7 +80,7 @@ public class SavingsAccount extends BankAccount{
 		string += "Savings Account Interest Rate: ";
 		string += format.format(getInterestRate()) + "\n";
 		string += "Savings Account Balance in 3 years: $";
-		string += format.format(futureValue(3));
+		//string += format.format(futureValue(3));
 		
 		return string; 
 	}

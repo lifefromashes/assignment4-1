@@ -82,7 +82,7 @@ public class CheckingAccount extends BankAccount{
 		string += "Checking Account Interest Rate: ";
 		string += other.format(getInterestRate()) + "\n";
 		string += "Checking Account Balance in 3 years: $";
-		string += format.format(futureValue(3));
+		//string += format.format(futureValue(3));
 		
 		return string; 
 	}
