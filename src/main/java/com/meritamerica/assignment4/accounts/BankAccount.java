@@ -2,6 +2,9 @@ package com.meritamerica.assignment4.accounts;
 
 
 import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -173,14 +176,15 @@ public abstract class BankAccount {
 		String s = "";
 		s += this.accountNumber + ",";
 		s += this.balance + ",";
-		s += this.interestRate + ",";
-		s += this.accountOpenedOn;
-		//String date = "";
-		//try {
-		//	date = "" + new SimpleDateFormat("dd/MM/yyyy").parse( ("" + this.accountOpenedOn) );
-		//	
-		//} catch (ParseException e){ };
-		//s += date;
+		
+		DecimalFormat df = new DecimalFormat("0.0000");
+		s += df.format(this.interestRate) + ",";
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		String date = sdf.format(this.accountOpenedOn);
+		s += date;
+		
+		
 		
 		return s;
 	}

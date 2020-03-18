@@ -113,7 +113,11 @@ public abstract class Transaction {
 		
 		s += this.targetAccountID + ",";
 		s += this.amount + ",";
-		s += this.transactionDate + "\n";
+		//s += this.transactionDate + "\n";
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		String date = sdf.format(this.transactionDate);
+		s += date + "\n";
 		
 		return s;
 	}
