@@ -13,7 +13,7 @@ public class DepositTransaction extends Transaction {
 	}
 	
 	public DepositTransaction(long sourceAccount, long targetAccount, double amount, Date transactionDate) {
-		super(targetAccount, targetAccount, amount, transactionDate);
+		super(sourceAccount, targetAccount, amount, transactionDate);
 	}
 	
 	

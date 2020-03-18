@@ -25,9 +25,10 @@ public abstract class Transaction {
 		this.transactionDate = transactionDate;
 	}
 	
-	public Transaction(long sourceAccount, long targetAccount, double amount, Date transactionDate) {
-		this.sourceAccountID = sourceAccount;
-		this.targetAccountID = targetAccount;
+	public Transaction(long sourceAccountNum, long targetAccountNum, double amount, Date transactionDate) {
+		System.out.println("in the consturctor, " + sourceAccountNum + ", " + targetAccountNum);
+		this.sourceAccountID = sourceAccountNum;
+		this.targetAccountID = targetAccountNum;
 		this.amount = amount;
 		this.transactionDate = transactionDate;
 	}
@@ -36,11 +37,14 @@ public abstract class Transaction {
 	
 	public void findAccounts() {
 		this.targetAccount = MeritBank.getBankAccount(this.targetAccountID);
+		this.sourceAccount = MeritBank.getBankAccount(this.sourceAccountID);
+		
+		/*
 		if(this.sourceAccountID == -1) {
 			this.sourceAccount = targetAccount;
 		} else {
 			this.sourceAccount = MeritBank.getBankAccount(this.sourceAccountID);
-		}
+		}*/
 	}
 	
 	
@@ -50,10 +54,6 @@ public abstract class Transaction {
 	
 	public static Transaction readFromString(String s) throws ParseException {
 		Transaction transaction; // = new DepositTransaction(); ///
-		
-		
-		
-		
 		
 		String sourceString = "";
 		String targetString = "";
@@ -75,32 +75,37 @@ public abstract class Transaction {
 			throw new NumberFormatException();
 		}
 		
+		long sourceAccountNum = Long.parseLong(sourceString);
+		long targetAccountNum = Long.parseLong(targetString);
 		
 		
-		long sourceAccount = Long.parseLong(sourceString);
-		long targetAccount = Long.parseLong(targetString);
 		double amount = Double.parseDouble(amountString);
 		Date newDate = new SimpleDateFormat("dd/MM/yyyy").parse(dateString);
 		
 		
-		
-		if(sourceAccount == -1) {
+		if(sourceAccountNum == -1) {
+			sourceAccountNum = targetAccountNum;
 			if(amount >= 0) {
-				transaction = new DepositTransaction(sourceAccount, targetAccount, amount, newDate);
+				transaction = new DepositTransaction(sourceAccountNum, targetAccountNum, amount, newDate);
 			} else {
-				transaction = new WithdrawTransaction(sourceAccount, targetAccount, amount, newDate);
+				transaction = new WithdrawTransaction(sourceAccountNum, targetAccountNum, amount, newDate);
 			}
 		} else {
-			transaction = new TransferTransaction(sourceAccount, targetAccount, amount, newDate);
+			transaction = new TransferTransaction(sourceAccountNum, targetAccountNum, amount, newDate);
+			
 		}
 		
+		System.out.println("___");
+		//System.out.println("___" + transaction.getSourceAccount().getAccountNumber() );
+		System.out.println("___" + transaction.getSourceAccountID() );
+		System.out.println("___" + transaction.getTargetAccountID() );
 		
 		return transaction;
 	}
 	
 	public String writeToString() {
 		String s = "";
-		if(this.sourceAccount == this.targetAccount) {
+		if(this.sourceAccountID == this.targetAccountID) {
 			s += "-1,";
 		} else {
 			s += this.sourceAccountID + ",";
@@ -146,6 +151,15 @@ public abstract class Transaction {
 	public void setTransactionDate(Date transactionDate) {
 		this.transactionDate = transactionDate;
 	}
+	
+	public long getSourceAccountID() {
+		return this.sourceAccountID;
+	}
+	
+	public long getTargetAccountID() {
+		return this.targetAccountID;
+	}
+	
 	// end getters and setters
 	
 	

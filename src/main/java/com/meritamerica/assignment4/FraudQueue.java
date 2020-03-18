@@ -24,4 +24,17 @@ public class FraudQueue {
 		
 		return t;
 	}
+	
+	public List<Transaction> getTransactions() {
+		return transactions;
+	}
+	
+	public String writeToString() {
+		String s = "";
+		for(Transaction t : transactions) {
+			s += t.writeToString();
+		}
+		
+		return s;
+	}
 }

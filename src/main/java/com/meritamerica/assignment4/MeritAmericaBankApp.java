@@ -7,5 +7,7 @@ public class MeritAmericaBankApp {
 		MeritBank.readFromFile("src/test/testMeritBank_good.txt");
 		
 		MeritBank.writeToFile("src/test/testMeritBank_new.txt");
+		
+
 	}
 }

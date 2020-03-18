@@ -493,6 +493,8 @@ public class MeritBank {
 			
 			s += getAccountHolders().length + "\n";
 			
+			
+			
 			for(int i=0; i < getAccountHolders().length; i ++) {
 				s += accountHolders[i].writeToString() + "\n";
 				
@@ -500,20 +502,21 @@ public class MeritBank {
 				for(int j=0; j < accountHolders[i].getCheckingAccounts().length; j ++) {
 					s += accountHolders[i].getCheckingAccounts()[j].writeToString() + "\n";
 					
-					s += accountHolders[i].getCheckingAccounts()[j].getTransactions().size();
+					s += accountHolders[i].getCheckingAccounts()[j].getTransactions().size() + "\n";
 					for(int k=0; k < accountHolders[i].getCheckingAccounts()[j].getTransactions().size(); k ++) {
 						s += accountHolders[i].getCheckingAccounts()[j].getTransactions().get(k).writeToString();
 					}
 					
 				}
 				
+				
 				s += accountHolders[i].getSavingsAccounts().length + "\n";
 				for(int j=0; j < accountHolders[i].getSavingsAccounts().length; j ++) {
 					s += accountHolders[i].getSavingsAccounts()[j].writeToString() + "\n";
 					
-					s += accountHolders[i].getCheckingAccounts()[j].getTransactions().size();
-					for(int k=0; k < accountHolders[i].getCheckingAccounts()[j].getTransactions().size(); k ++) {
-						s += accountHolders[i].getCheckingAccounts()[j].getTransactions().get(k);
+					s += accountHolders[i].getSavingsAccounts()[j].getTransactions().size() + "\n";
+					for(int k=0; k < accountHolders[i].getSavingsAccounts()[j].getTransactions().size(); k ++) {
+						s += accountHolders[i].getSavingsAccounts()[j].getTransactions().get(k).writeToString();;
 					}
 				}
 				
@@ -521,13 +524,15 @@ public class MeritBank {
 				for(int j=0; j < accountHolders[i].getCDAccounts().length; j ++) {
 					s += accountHolders[i].getCDAccounts()[j].writeToString() + "\n";
 					
-					s += accountHolders[i].getCheckingAccounts()[j].getTransactions().size();
-					for(int k=0; k < accountHolders[i].getCheckingAccounts()[j].getTransactions().size(); k ++) {
-						s += accountHolders[i].getCheckingAccounts()[j].getTransactions().get(k);
+					s += accountHolders[i].getCDAccounts()[j].getTransactions().size() + "\n";
+					for(int k=0; k < accountHolders[i].getCDAccounts()[j].getTransactions().size(); k ++) {
+						s += accountHolders[i].getCDAccounts()[j].getTransactions().get(k).writeToString();
 					}
 				}
 				
 			}
+			s += fraudQueue.getTransactions().size() + "\n";
+			s += fraudQueue.writeToString();
 			
 			System.out.println(s);
 			System.out.println(".....");
@@ -535,7 +540,12 @@ public class MeritBank {
 
 			
 			File file = new File(fileName);
-			file.createNewFile();
+			
+			if( file.createNewFile() ) {
+				System.out.println("newwwwwwwwwwwwwwww");
+			} else {
+				System.out.println("olllllldddddddddd");
+			}
 			
 			
 			FileWriter writer = new FileWriter(fileName, false);
@@ -543,7 +553,9 @@ public class MeritBank {
             writer.close();
 			
 			return true;
-		} catch (Exception e) { }
+		} catch (Exception e) {
+			System.out.println("error writing file");
+		}
 		
 		return false;
 	}

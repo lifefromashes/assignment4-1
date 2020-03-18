@@ -11,7 +11,7 @@ public class WithdrawTransaction extends Transaction{
 	}
 	
 	public WithdrawTransaction(long sourceAccount, long targetAccount, double amount, Date transactionDate) {
-		super(targetAccount, targetAccount, amount, transactionDate);
+		super(sourceAccount, targetAccount, amount, transactionDate);
 	}
 	
 }
