@@ -1,10 +1,14 @@
-package com.meritamerica.assignment4;
+package com.meritamerica.assignment4.accounts;
 
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import com.meritamerica.assignment4.MeritBank;
+import com.meritamerica.assignment4.exceptions.ExceedsFraudSuspicionLimitException;
+import com.meritamerica.assignment4.transactions.Transaction;
 
 /**
  * This parent class will set the basic methods for each of the account
@@ -107,7 +111,10 @@ public abstract class BankAccount {
 		return this.balance * cr;
 		*/
 		
+		//return 100.0 * Math.pow(1 + this.interestRate, years);
+		
 		return recursiveFutureValue(years);
+		//return recursiveFutureValueFloat(years);
 	}
 	public double recursiveFutureValue(int years) {
 		//if(years == 1) { return this.balance * (1 + this.interestRate); } 
@@ -115,6 +122,14 @@ public abstract class BankAccount {
 		
 		if(years == 0) { return this.balance; } 
 		return (recursiveFutureValue(years - 1) * (1 + this.interestRate));
+	}
+	
+	public float recursiveFutureValueFloat(int years) {
+		//if(years == 1) { return this.balance * (1 + this.interestRate); } 
+		//return recursiveFutureValue(years - 1) * (1 + this.interestRate);
+		
+		if(years == 0) { return (float)this.balance; } 
+		return (recursiveFutureValueFloat(years - 1) * (1 + (float)this.interestRate));
 	}
 	
 	

@@ -39,11 +39,14 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import com.meritamerica.assignment4.AccountHolder;
-import com.meritamerica.assignment4.CDAccount;
 import com.meritamerica.assignment4.CDOffering;
-import com.meritamerica.assignment4.CheckingAccount;
 import com.meritamerica.assignment4.MeritBank;
-import com.meritamerica.assignment4.SavingsAccount;
+import com.meritamerica.assignment4.accounts.CDAccount;
+import com.meritamerica.assignment4.accounts.CheckingAccount;
+import com.meritamerica.assignment4.accounts.SavingsAccount;
+import com.meritamerica.assignment4.exceptions.ExceedsCombinedBalanceLimitException;
+import com.meritamerica.assignment4.exceptions.ExceedsFraudSuspicionLimitException;
+import com.meritamerica.assignment4.exceptions.NegativeAmountException;
 
 import static org.junit.Assert.*;
 

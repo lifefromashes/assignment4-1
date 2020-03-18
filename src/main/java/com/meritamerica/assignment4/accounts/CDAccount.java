@@ -1,7 +1,11 @@
-package com.meritamerica.assignment4;
+package com.meritamerica.assignment4.accounts;
 
 import java.text.ParseException;
 import java.util.Date;
+
+import com.meritamerica.assignment4.CDOffering;
+import com.meritamerica.assignment4.MeritBank;
+import com.meritamerica.assignment4.exceptions.ExceedsFraudSuspicionLimitException;
 
 public class CDAccount extends BankAccount {
 	

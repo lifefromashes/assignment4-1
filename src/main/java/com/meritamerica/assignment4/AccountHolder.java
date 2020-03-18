@@ -2,6 +2,11 @@ package com.meritamerica.assignment4;
 
 import java.text.ParseException;
 
+import com.meritamerica.assignment4.accounts.CDAccount;
+import com.meritamerica.assignment4.accounts.CheckingAccount;
+import com.meritamerica.assignment4.accounts.SavingsAccount;
+import com.meritamerica.assignment4.exceptions.ExceedsCombinedBalanceLimitException;
+
 /**
  * Each instance of this class represents a bank customer 
  * 

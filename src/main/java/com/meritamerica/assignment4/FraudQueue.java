@@ -3,6 +3,8 @@ package com.meritamerica.assignment4;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.meritamerica.assignment4.transactions.Transaction;
+
 public class FraudQueue {
 
 	List<Transaction> transactions;

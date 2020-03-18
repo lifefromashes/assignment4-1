@@ -1,6 +1,8 @@
-package com.meritamerica.assignment4;
+package com.meritamerica.assignment4.transactions;
 
 import java.util.Date;
+
+import com.meritamerica.assignment4.accounts.BankAccount;
 
 public class DepositTransaction extends Transaction {
 	

@@ -6,6 +6,15 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.Arrays;
 
+import com.meritamerica.assignment4.accounts.BankAccount;
+import com.meritamerica.assignment4.accounts.CDAccount;
+import com.meritamerica.assignment4.accounts.CheckingAccount;
+import com.meritamerica.assignment4.accounts.SavingsAccount;
+import com.meritamerica.assignment4.exceptions.ExceedsAvailableBalanceException;
+import com.meritamerica.assignment4.exceptions.ExceedsFraudSuspicionLimitException;
+import com.meritamerica.assignment4.exceptions.NegativeAmountException;
+import com.meritamerica.assignment4.transactions.Transaction;
+
 
 /**
  * This class is the main point for storing bank information
@@ -490,20 +499,38 @@ public class MeritBank {
 				s += accountHolders[i].getCheckingAccounts().length + "\n";
 				for(int j=0; j < accountHolders[i].getCheckingAccounts().length; j ++) {
 					s += accountHolders[i].getCheckingAccounts()[j].writeToString() + "\n";
+					
+					s += accountHolders[i].getCheckingAccounts()[j].getTransactions().size();
+					for(int k=0; k < accountHolders[i].getCheckingAccounts()[j].getTransactions().size(); k ++) {
+						s += accountHolders[i].getCheckingAccounts()[j].getTransactions().get(k).writeToString();
+					}
+					
 				}
 				
 				s += accountHolders[i].getSavingsAccounts().length + "\n";
 				for(int j=0; j < accountHolders[i].getSavingsAccounts().length; j ++) {
 					s += accountHolders[i].getSavingsAccounts()[j].writeToString() + "\n";
+					
+					s += accountHolders[i].getCheckingAccounts()[j].getTransactions().size();
+					for(int k=0; k < accountHolders[i].getCheckingAccounts()[j].getTransactions().size(); k ++) {
+						s += accountHolders[i].getCheckingAccounts()[j].getTransactions().get(k);
+					}
 				}
 				
 				s += accountHolders[i].getCDAccounts().length + "\n";
 				for(int j=0; j < accountHolders[i].getCDAccounts().length; j ++) {
 					s += accountHolders[i].getCDAccounts()[j].writeToString() + "\n";
+					
+					s += accountHolders[i].getCheckingAccounts()[j].getTransactions().size();
+					for(int k=0; k < accountHolders[i].getCheckingAccounts()[j].getTransactions().size(); k ++) {
+						s += accountHolders[i].getCheckingAccounts()[j].getTransactions().get(k);
+					}
 				}
 				
 			}
 			
+			System.out.println(s);
+			System.out.println(".....");
 			
 
 			

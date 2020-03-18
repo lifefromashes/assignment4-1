@@ -1,4 +1,4 @@
-package com.meritamerica.assignment4;
+package com.meritamerica.assignment4.accounts;
 
 import java.text.DecimalFormat;
 import java.text.ParseException;

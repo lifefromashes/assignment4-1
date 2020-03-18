@@ -1,8 +1,11 @@
-package com.meritamerica.assignment4;
+package com.meritamerica.assignment4.transactions;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import com.meritamerica.assignment4.MeritBank;
+import com.meritamerica.assignment4.accounts.BankAccount;
 
 public abstract class Transaction {
 	
@@ -97,6 +100,15 @@ public abstract class Transaction {
 	
 	public String writeToString() {
 		String s = "";
+		if(this.sourceAccount == this.targetAccount) {
+			s += "-1,";
+		} else {
+			s += this.sourceAccountID + ",";
+		}
+		
+		s += this.targetAccountID + ",";
+		s += this.amount + ",";
+		s += this.transactionDate + "\n";
 		
 		return s;
 	}
