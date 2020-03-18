@@ -193,7 +193,7 @@ public class SolutionTest {
 
         double fv = 100.0 * Math.pow(1 + 0.01, 3);
         
-        assertEquals(fv, savingsAccount.futureValue(3), 0);
+        assertEquals(fv, savingsAccount.futureValue(3), 0.1);
     }
 
     @Test
@@ -208,7 +208,7 @@ public class SolutionTest {
 
         double fv = 100.0 * Math.pow(1 + 0.0001, 3);
         
-        assertEquals(fv, checkingAccount.futureValue(3), 0);
+        assertEquals(fv, checkingAccount.futureValue(3), 0.1);
     }
     
     @Test(expected = ExceedsFraudSuspicionLimitException.class)
@@ -223,7 +223,7 @@ public class SolutionTest {
 
         double fv = 10000.0 * Math.pow(1 + 0.03, 5);
         
-        assertEquals(fv, cdAccount.futureValue(), 0);
+        assertEquals(fv, cdAccount.futureValue(), 0.1);
     }
     
     @Test
