@@ -4,10 +4,12 @@ package com.meritamerica.assignment4.accounts;
 import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import com.meritamerica.assignment4.MeritBank;
 import com.meritamerica.assignment4.exceptions.ExceedsFraudSuspicionLimitException;
@@ -153,7 +155,6 @@ public abstract class BankAccount {
 		System.out.println("Error, unable to process transaction.");
 	}
 	
-	
 	public void addTransaction(Transaction t) {
 		this.transactions.add(t);
 	}
@@ -161,10 +162,6 @@ public abstract class BankAccount {
 	public List<Transaction> getTransactions() {
 		return this.transactions;
 	}
-	
-	
-	
-	
 	
 	/**
 	 * Represents this object as a string of text to save in a file
@@ -177,14 +174,16 @@ public abstract class BankAccount {
 		s += this.accountNumber + ",";
 		s += this.balance + ",";
 		
-		DecimalFormat df = new DecimalFormat("0.0000");
+		//DecimalFormat df = new DecimalFormat("0.0000");
+		DecimalFormat df = new DecimalFormat("0", DecimalFormatSymbols.getInstance(Locale.ENGLISH));
+		df.setMaximumFractionDigits(340);
 		s += df.format(this.interestRate) + ",";
+		
+		//s += this.interestRate + ",";
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		String date = sdf.format(this.accountOpenedOn);
 		s += date;
-		
-		
 		
 		return s;
 	}

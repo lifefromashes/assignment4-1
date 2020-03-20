@@ -542,9 +542,9 @@ public class MeritBank {
 			File file = new File(fileName);
 			
 			if( file.createNewFile() ) {
-				System.out.println("newwwwwwwwwwwwwwww");
+				//System.out.println("new file created.");
 			} else {
-				System.out.println("olllllldddddddddd");
+				//System.out.println("existing file found.");
 			}
 			
 			

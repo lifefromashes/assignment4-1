@@ -95,10 +95,6 @@ public abstract class Transaction {
 			
 		}
 		
-		System.out.println("___");
-		//System.out.println("___" + transaction.getSourceAccount().getAccountNumber() );
-		System.out.println("___" + transaction.getSourceAccountID() );
-		System.out.println("___" + transaction.getTargetAccountID() );
 		
 		return transaction;
 	}
